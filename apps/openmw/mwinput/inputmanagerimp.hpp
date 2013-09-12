@@ -6,7 +6,7 @@
 #include <components/settings/settings.hpp>
 
 #include "../mwbase/inputmanager.hpp"
-#include <extern/sdl4ogre/sdlinputwrapper.hpp>
+#include <libs/sdl4ogre/sdlinputwrapper.hpp>
 
 namespace OEngine
 {

@@ -500,10 +500,10 @@ if(WIN32)
     include(CPack)
 endif(WIN32)
 
-# Extern
+# Extern & Libs
 add_subdirectory (extern/shiny)
 add_subdirectory (extern/oics)
-add_subdirectory (extern/sdl4ogre)
+add_subdirectory (libs/sdl4ogre)
 
 # Components
 add_subdirectory (components)

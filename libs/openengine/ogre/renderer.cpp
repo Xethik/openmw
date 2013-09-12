@@ -18,7 +18,7 @@
 
 #include <components/files/ogreplugin.hpp>
 
-#include <extern/sdl4ogre/sdlwindowhelper.hpp>
+#include <libs/sdl4ogre/sdlwindowhelper.hpp>
 
 #include <cassert>
 #include <cstdlib>
@@ -30,8 +30,8 @@ using namespace OEngine::Render;
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 
-CustomRoot::CustomRoot(const Ogre::String& pluginFileName, 
-                    const Ogre::String& configFileName, 
+CustomRoot::CustomRoot(const Ogre::String& pluginFileName,
+                    const Ogre::String& configFileName,
                     const Ogre::String& logFileName)
 : Ogre::Root(pluginFileName, configFileName, logFileName)
 {}
@@ -77,7 +77,7 @@ void OgreRenderer::start()
 #endif
 }
 
-void OgreRenderer::loadPlugins() 
+void OgreRenderer::loadPlugins()
 {
     #ifdef ENABLE_PLUGIN_GL
     mGLPlugin = new Ogre::GLPlugin();

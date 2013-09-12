@@ -27,12 +27,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef _InputControlSystem_H_
 #define _InputControlSystem_H_
 
+#include <libs/sdl4ogre/events.h>
+
 #include "ICSPrerequisites.h"
 
 #include "ICSControl.h"
 #include "ICSChannel.h"
-
-#include "../sdl4ogre/events.h"
 
 #define ICS_LOG(text) if(mLog) mLog->logMessage( ("ICS: " + std::string(text)).c_str() );
 #define ICS_MAX_JOYSTICK_AXIS 16
@@ -43,13 +43,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 namespace ICS
 {
-	class DllExport InputControlSystemLog 
+	class DllExport InputControlSystemLog
 	{
 	public:
 		virtual void logMessage(const char* text) = 0;
 	};
 
-	class DllExport InputControlSystem : 
+	class DllExport InputControlSystem :
 		public SFO::MouseListener,
 		public SFO::KeyListener,
         public SFO::JoyListener
@@ -72,7 +72,7 @@ namespace ICS
 
 		InputControlSystem(std::string file = "", bool active = true
 			, DetectingBindingListener* detectingBindingListener = NULL
-			, InputControlSystemLog* log = NULL, size_t channelCount = 16); 
+			, InputControlSystemLog* log = NULL, size_t channelCount = 16);
 		~InputControlSystem();
 
 		std::string getFileName(){ return mFileName; };
@@ -100,16 +100,16 @@ namespace ICS
 
 		void addJoystick(int deviceId);
 		JoystickIDList& getJoystickIdList(){ return mJoystickIDList; };
-		
+
 		// MouseListener
 		bool mouseMoved(const SFO::MouseMotionEvent &evt);
 		bool mousePressed(const SDL_MouseButtonEvent &evt, Uint8);
 		bool mouseReleased(const SDL_MouseButtonEvent &evt, Uint8);
-		
+
 		// KeyListener
 		bool keyPressed(const SDL_KeyboardEvent &evt);
 		bool keyReleased(const SDL_KeyboardEvent &evt);
-		
+
 		// JoyStickListener
 		bool buttonPressed(const SDL_JoyButtonEvent &evt, int button);
 		bool buttonReleased(const SDL_JoyButtonEvent &evt, int button);
@@ -192,16 +192,16 @@ namespace ICS
 		typedef std::map<int, ControlSliderBinderItem> ControlsSliderBinderMapType;		// <index, [direction, control]>
 
 		typedef std::map<int, ControlsAxisBinderMapType> JoystickAxisBinderMapType;					// <joystick_id, <axis, [direction, control]> >
-		typedef std::map<int, ControlsButtonBinderMapType> JoystickButtonBinderMapType;				// <joystick_id, <button, [direction, control]> > 
+		typedef std::map<int, ControlsButtonBinderMapType> JoystickButtonBinderMapType;				// <joystick_id, <button, [direction, control]> >
         typedef std::map<int, std::map<int, ControlsPOVBinderMapType> > JoystickPOVBinderMapType;	// <joystick_id, <index, <axis, [direction, control]> > >
-		typedef std::map<int, ControlsSliderBinderMapType> JoystickSliderBinderMapType;				// <joystick_id, <index, [direction, control]> > 
+		typedef std::map<int, ControlsSliderBinderMapType> JoystickSliderBinderMapType;				// <joystick_id, <index, [direction, control]> >
 
 		ControlsAxisBinderMapType mControlsMouseAxisBinderMap;			// <axis, [direction, control]>
 		ControlsButtonBinderMapType mControlsMouseButtonBinderMap;		// <int, [direction, control]>
 		JoystickAxisBinderMapType mControlsJoystickAxisBinderMap;		// <joystick_id, <axis, [direction, control]> >
-		JoystickButtonBinderMapType mControlsJoystickButtonBinderMap;	// <joystick_id, <button, [direction, control]> > 
-		JoystickPOVBinderMapType mControlsJoystickPOVBinderMap;			// <joystick_id, <index, <axis, [direction, control]> > > 
-		JoystickSliderBinderMapType mControlsJoystickSliderBinderMap;	// <joystick_id, <index, [direction, control]> > 
+		JoystickButtonBinderMapType mControlsJoystickButtonBinderMap;	// <joystick_id, <button, [direction, control]> >
+		JoystickPOVBinderMapType mControlsJoystickPOVBinderMap;			// <joystick_id, <index, <axis, [direction, control]> > >
+		JoystickSliderBinderMapType mControlsJoystickSliderBinderMap;	// <joystick_id, <index, [direction, control]> >
 
 		std::vector<Control *> mControls;
 		std::vector<Channel *> mChannels;
@@ -212,7 +212,7 @@ namespace ICS
 
 		bool mActive;
 		InputControlSystemLog* mLog;
-		
+
 		DetectingBindingListener* mDetectingBindingListener;
 		Control* mDetectingBindingControl;
 		Control::ControlChangingDirection mDetectingBindingDirection;

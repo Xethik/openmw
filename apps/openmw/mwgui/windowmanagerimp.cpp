@@ -11,7 +11,7 @@
 #include <openengine/ogre/renderer.hpp>
 #include <openengine/gui/manager.hpp>
 
-#include <extern/sdl4ogre/sdlcursormanager.hpp>
+#include <libs/sdl4ogre/sdlcursormanager.hpp>
 
 #include "../mwbase/inputmanager.hpp"
 
